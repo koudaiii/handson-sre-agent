@@ -1,4 +1,4 @@
-.PHONY: init
+.PHONY: init clean
 init: sql/1_data.sql benchmarker/userdata/img
 
 sql/dump.sql.bz2:
@@ -18,3 +18,8 @@ benchmarker/userdata/img.zip:
 benchmarker/userdata/img: benchmarker/userdata/img.zip
 	cd benchmarker/userdata && \
 	unzip -qq -o img.zip
+
+clean:
+	rm -f sql/dump.sql.bz2 sql/dump.sql sql/1_data.sql
+	rm -f benchmarker/userdata/img.zip
+	rm -rf benchmarker/userdata/img
